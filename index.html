@@ -1,0 +1,14 @@
+<meta charset="utf-8">
+<h1>Trapping Rain Water: From O(n) Space to Two Pointers</h1>
+<p>Trapping Rain Water is a favorite hard question because the brute force is obvious and the optimal version needs one clean insight.</p>
+<h2>The insight</h2>
+<p>Water above index i equals <code>min(maxLeft[i], maxRight[i]) - height[i]</code>, never below zero. Everything else is about computing those two maxima cheaply.</p>
+<h2>Version 1: prefix and suffix arrays</h2>
+<p>Precompute <code>maxLeft</code> from the left and <code>maxRight</code> from the right, then sum. O(n) time and O(n) space. This is a strong first answer.</p>
+<h2>Version 2: two pointers</h2>
+<p>Keep <code>left</code>, <code>right</code>, <code>leftMax</code>, and <code>rightMax</code>. Move whichever side has the smaller max, because that side's water level is already decided. O(n) time and O(1) space.</p>
+<h2>Version 3: monotonic stack</h2>
+<p>Push indices while heights decrease; when a taller bar arrives, pop and add the water trapped between the new bar and the bar below the popped one. Mention it if the interviewer asks for alternatives.</p>
+<h2>Test cases</h2>
+<p><code>[0,1,0,2,1,0,1,3,2,1,2,1]</code> gives 6. Also try an empty array, a strictly increasing array, and a single valley. For timed practice on problems like this I use an <a href="https://www.linkjob.ai/coding-interview-copilot/">AI coding interview assistant</a>.</p>
+<p><em>Disclosure: I work on Linkjob AI.</em></p>
